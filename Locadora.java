@@ -41,8 +41,7 @@ public class Locadora {
                         System.exit(0);
                 default:
                         System.out.println("opção Invalida!");
+            }
         }
     }
-        }
-
 }
