@@ -1,46 +1,39 @@
 package locadora;
+
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Locadora {
-
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
         Scanner ler = new Scanner(System.in);
         int op = 0;
-        String firstOp;
-        while (true) {
-            System.out.print("1  --  Cadastrar Veículo\n");
-            System.out.print("2  --  Cadastrar Cliente\n");
-            System.out.print("3  --  Locação de Veículo\n");
-            System.out.print("4  --  Listagem de veículos cadastrados\n");
-            System.out.print("5  --  Listagem das locações\n");
-            System.out.print("6  --  Listagem de veículos disponíveis\n");
-            System.out.print("\n Escolha uma opcão: ");
-            op = ler.nextInt();
-            
+
+        while(true) {
+            System.out.print("\n\n  Menu\n\n  1 - Cadastrar Veículo\n  2 - Cadastrar Cliente\n  3 - Locação de Veículo\n  4 - Listagem de veículos cadastrados\n  5 - Listagem das locações\n  6 - Listagem de veículos disponíveis\n  7 - Sair\n\n  Escolha uma opcão: ");
+
+            try {
+                op = ler.nextInt();
+            }catch (InputMismatchException a) {
+                System.out.print("\n Erro Input\n");
+                ler.nextLine();
+            }
             switch (op) {
-                               
                 case 1:
-                        
-                        break;
+                    break;
                 case 2:
-                        
-                        break;
+                    break;
                 case 3:
-                        
-                        break;
+                    break;
                 case 4:
-                        
-                        break;
+                    break;
                 case 5:
-                        
-                        break;
+                    break;
                 case 6:
-                        System.exit(0);
+                    break;
+                case 7:
+                    System.exit(0);
                 default:
-                        System.out.println("opção Invalida!");
+                    System.out.println("\n\n  Opção Invalida!");
             }
         }
     }

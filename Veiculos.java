@@ -1,17 +1,10 @@
-package Locadora;
-
+package locadora;
 public class Veiculos {
-	
-	
-		private Boolean  tipo;
+		private Boolean tipo;
 		private double valor;
-		private String veiculo; // descriçao
+		private String veiculo;
 		private String placa;
-		
-		
-		
-		
-		
+
 		public double getValor() {
 			return valor;
 		}
@@ -36,8 +29,4 @@ public class Veiculos {
 		public void setTipo(Boolean tipo) {
 			this.tipo = tipo;
 		}
-		
-		
-	
-
 }
