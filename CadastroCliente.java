@@ -4,47 +4,72 @@ import java.util.Scanner;
 
 public class CadastroCliente  {
 
-	String nome;
-	int idade;
-	int cpf;
-	String rua;
-	int contato;
+	private String nome;
+	private int idade;
+	private int cpf;
+	private String contato;
 
-
-
-
-
-
-	public void Cadastro(){
-
-
-
-
-		System.out.println("Digite seu nome:");
-		Scanner leitor = new Scanner(System.in);
-		nome = leitor.next();
-
-		System.out.println("Digite sua idade:");
-		Scanner leitor2 = new Scanner(System.in);
-		idade = leitor2.nextInt();
-
-		System.out.println("Digite seu cpf:");
-		Scanner leitor3 = new Scanner(System.in);
-		cpf = leitor3.nextInt();
-
-		System.out.println("Digite sua Rua"+"Rua ");
-		Scanner leitor4 = new Scanner(System.in);
-		rua = leitor4.next();
-
-		System.out.println("Digite seu numero para contato:");
-		Scanner leitor5 = new Scanner(System.in);
-		contato = leitor5.nextInt();
-
-
+	/**
+	* Returns value of nome
+	* @return
+	*/
+	public String getNome() {
+		return nome;
 	}
 
+	/**
+	* Sets new value of nome
+	* @param
+	*/
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
 
+	/**
+	* Returns value of idade
+	* @return
+	*/
+	public int getIdade() {
+		return idade;
+	}
 
+	/**
+	* Sets new value of idade
+	* @param
+	*/
+	public void setIdade(int idade) {
+		this.idade = idade;
+	}
 
+	/**
+	* Returns value of cpf
+	* @return
+	*/
+	public int getCpf() {
+		return cpf;
+	}
 
+	/**
+	* Sets new value of cpf
+	* @param
+	*/
+	public void setCpf(int cpf) {
+		this.cpf = cpf;
+	}
+
+	/**
+	* Returns value of contato
+	* @return
+	*/
+	public String getContato() {
+		return contato;
+	}
+
+	/**
+	* Sets new value of contato
+	* @param
+	*/
+	public void setContato(String contato) {
+		this.contato = contato;
+	}
 }
