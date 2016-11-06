@@ -16,7 +16,12 @@ public class Main {
         ArrayList<Veiculo> listVeiculo = new ArrayList<Veiculo>();
 
         while(true) {
-            System.out.print("\n  Locadora de Veiculos\n\n  1 - Cadastrar veículo\n  2 - Cadastrar cliente\n  3 - Locação de veículo\n  4 - Listagem de veículos cadastrados\n  5 - Listagem das locações\n  6 - Listagem de veículos disponíveis\n  7 - Sair\n\n  Escolha uma opcão: ");
+            new Clear().clearConsole();
+            System.out.print("\n  Locadora de Veiculos\n\n  1 - Cadastrar veículo\n  2 - Cadastrar cliente\n  3 - Locação de veículo\n  4 - Listagem de veículos cadastrados\n  5 - Listagem das locações\n  6 - Listagem de veículos disponíveis\n  7 - Sair\n");
+            if(op == 66){
+                System.out.print("\n  Opção invalida!");
+            }
+            System.out.print("\n  Escolha uma opcão: ");
             try {
                 op = leitor.nextInt();
             } catch (InputMismatchException a) {
@@ -51,7 +56,7 @@ public class Main {
                 case 7:
                     System.exit(0);
                 default:
-                    System.out.println("\n\n  Opção invalida!");
+                    op = 66; //opção invalida
             }
         }
     }
