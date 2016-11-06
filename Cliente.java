@@ -51,8 +51,8 @@ public class Cliente {
 			}
 		}
 
-		System.out.print("\n  Digite o contato: ");
 		leitor.nextLine();
+		System.out.print("\n  Digite o contato: ");
 		this.contato = leitor.nextLine();
 	}
 }
