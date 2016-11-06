@@ -10,25 +10,56 @@ public class Veiculo {
 		private String placaVeiculo;
 		private int carroNumeroPassageiros;
 		private boolean motoPartidaEletrica = true; // True = tem partida		False = não tem partida
+		private boolean status;
 
-		public boolean getTipoVeiculo() {
+		public boolean isTipoVeiculo() {
 			return tipoVeiculo;
 		}
+		public void setTipoVeiculo(boolean tipoVeiculo) {
+			this.tipoVeiculo = tipoVeiculo;
+		}
+
 		public double getValorDiaria() {
 			return valorDiaria;
 		}
+		public void setValorDiaria(double valorDiaria) {
+			this.valorDiaria = valorDiaria;
+		}
+
 		public String getDescricaoVeiculo() {
 			return descricaoVeiculo;
 		}
+		public void setDescricaoVeiculo(String descricaoVeiculo) {
+			this.descricaoVeiculo = descricaoVeiculo;
+		}
+
 		public String getPlacaVeiculo() {
 			return placaVeiculo;
 		}
-		public int carroNumeroPassageiros() {
+		public void setPlacaVeiculo(String placaVeiculo) {
+			this.placaVeiculo = placaVeiculo;
+		}
+
+		public int getCarroNumeroPassageiros() {
 			return carroNumeroPassageiros;
 		}
-	    public boolean motoPartidaEletrica() {
-	        return motoPartidaEletrica;
-	    }
+		public void setCarroNumeroPassageiros(int carroNumeroPassageiros) {
+			this.carroNumeroPassageiros = carroNumeroPassageiros;
+		}
+
+		public boolean isMotoPartidaEletrica() {
+			return motoPartidaEletrica;
+		}
+		public void setMotoPartidaEletrica(boolean motoPartidaEletrica) {
+			this.motoPartidaEletrica = motoPartidaEletrica;
+		}
+
+		public boolean isStatus() {
+			return status;
+		}
+		public void setStatus(boolean status) {
+			this.status = status;
+		}
 
 		public void Cadastrar(){
 			Scanner leitor = new Scanner(System.in);
