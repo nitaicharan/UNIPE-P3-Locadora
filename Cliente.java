@@ -58,7 +58,7 @@ public class Cliente {
 			new Clear().clearConsole();
 			System.out.print("\n  Cadastro Cliente");
 			try {
-				if (in == -66){
+				if (in == -666){
 					System.out.print("\n\n  Tente novamente, digite apenas números");
 				}
 				System.out.print("\n\n  Digite sua idade: ");
@@ -66,7 +66,7 @@ public class Cliente {
 				in = 0;
 				break;
 			} catch(InputMismatchException a) {
-				in = -66;
+				in = -666;
 				leitor.nextLine();
 			}
 		}
@@ -75,7 +75,7 @@ public class Cliente {
 			new Clear().clearConsole();
 			System.out.print("\n  Cadastro Cliente\n");
 			try {
-				if (in == -66){
+				if (in == -666){
 					System.out.print("\n  Tente novamente, digite apenas números\n");
 				}
 			  	System.out.print("\n  Digite seu cpf: ");
@@ -83,7 +83,7 @@ public class Cliente {
 				in = 0;
 				break;
 			} catch(InputMismatchException b) {
-				in = -66;
+				in = -666;
 				leitor.nextLine();
 			}
 		}

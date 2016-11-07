@@ -69,7 +69,7 @@ public class Veiculo {
 				new Clear().clearConsole();
 				try {
 					System.out.print("\n  Cadastro de veiculo\n\n  1 - Carro\n  2 - Moto\n");
-					if(in == -66){
+					if(in == -666){
 						System.out.print("\n  Tente novamente, Opção invalida");
 					}
 					System.out.print("\n  Escolha uma opção: ");
@@ -80,16 +80,17 @@ public class Veiculo {
 						this.tipoVeiculo = false;
 						break;
 					}
-					in = -66;
+					in = -666;
 				} catch(InputMismatchException a) {
-					in = -66;
+					in = -666;
 					leitor.nextLine();
 				}
 			}
 			while(true) {
 				new Clear().clearConsole();
+				System.out.print("\n  Cadastro de veiculo\n");
 				try {
-					if(in == -66){
+					if(in == -666){
 						System.out.print("\n  Tente novamente, Valor invalido");
 					}
 					System.out.print("\n  Digite o valor da diaria do veiculo: ");
@@ -97,28 +98,29 @@ public class Veiculo {
 					if(this.valorDiaria > 0.0) {
 						break;
 					}
-					in = -66;
+					in = -666;
 				} catch(InputMismatchException a) {
-					in = -66;
+					in = -666;
 					leitor.nextLine();
 				}
-				in = 1;
 			}
 
+			in = 1;
 			leitor.nextLine();
 			new Clear().clearConsole();
-			System.out.print("\n  Digite a descrição do veiculo: ");
+			System.out.print("\n  Cadastro de veiculo\n\n  Digite a descrição do veiculo: ");
 			this.descricaoVeiculo = leitor.nextLine();
 
 			new Clear().clearConsole();
-			System.out.print("\n  Digite a placa do veiculo: ");
+			System.out.print("\n  Cadastro de veiculo\n\n  Digite a placa do veiculo: ");
 			this.placaVeiculo = leitor.nextLine();
 
 			if(this.tipoVeiculo) {
 				while(true) {
 					new Clear().clearConsole();
+					System.out.print("\n  Cadastro de veiculo\n");
 					try {
-						if(in == -66){
+						if(in == -666){
 							System.out.print("\n  Tente novamente, Valor invalido");
 						}
 						System.out.print("\n  Digite o numero de passageiros:");
@@ -126,9 +128,9 @@ public class Veiculo {
 						if(this.carroNumeroPassageiros > 0) {
 							break;
 						}
-						in = -66;
+						in = -666;
 					} catch(InputMismatchException a) {
-						in = -66;
+						in = -666;
 						leitor.nextLine();
 					}
 				}
@@ -137,7 +139,7 @@ public class Veiculo {
 					new Clear().clearConsole();
 					try {
 						System.out.print("\n  Possui partida eletrica\n\n  1 - Sim\n  2 - Não\n\n  ");
-						if(in == -66){
+						if(in == -666){
 							System.out.print("\n  Tente novamente, Valor invalido");
 						}
 						System.out.print("Escolha uma opção: ");
@@ -145,9 +147,9 @@ public class Veiculo {
 						if((in == 1) || (in == 2)) {
 							break;
 						}
-						in = -66;
+						in = -666;
 					} catch(InputMismatchException a) {
-						in = -66;
+						in = -666;
 						leitor.nextLine();
 					}
 					if (in == 2){
