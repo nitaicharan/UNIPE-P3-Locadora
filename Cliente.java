@@ -81,9 +81,8 @@ public class Cliente {
 		}
 
 		new Clear().clearConsole();
-		System.out.print("\n  Cadastro Cliente\n");
 		leitor.nextLine();
-		System.out.print("\n  Digite o contato: ");
+		System.out.print("\n  Cadastro Cliente\n\n  Digite o contato: ");
 		this.contato = leitor.nextLine();
 	}
 }
