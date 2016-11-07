@@ -13,7 +13,6 @@ public class Main {
 
         ArrayList<Veiculo> listVeiculo = new ArrayList<Veiculo>();
 
-        Locacao alugado = new Locacao();
         ArrayList<Locacao> listAlugado = new ArrayList<Locacao>();
 
         while(true) {
@@ -107,14 +106,15 @@ public class Main {
                         }
                         else break;
                       }
+                      Locacao alugado = new Locacao();
                       alugado.aluga();
                       listAlugado.add(alugado);
                     }
 
                     break;
                 case 4: // Esta listando todos os cadastros de veiculo para teste
-
-                    System.out.print("    Tipo   Descrição                         Placa\n" + listVeiculo.size());
+                    new Clear().clearConsole();
+                    System.out.print("    Tipo   Descrição                       Placa\n" + listVeiculo.size());
                     for(int x = 0; x < listVeiculo.size(); x++){
                         System.out.printf("\n%2d  ", x+1);
                         if (listVeiculo.get(x).isTipoVeiculo()){
@@ -130,6 +130,21 @@ public class Main {
                 case 5:
                     break;
                 case 6:
+                    new Clear().clearConsole();
+                    System.out.print("    Tipo   Descrição                       Placa\n" + listVeiculo.size());
+                    for(int x = 0; x < listVeiculo.size(); x++){
+                        if(listVeiculo.get(x).isDisponivel()){
+                            System.out.printf("\n%2d  ", x+1);
+                            if (listVeiculo.get(x).isTipoVeiculo()){
+                                System.out.printf("Carro  %30s  %8s  ", listVeiculo.get(x).getDescricaoVeiculo(), listVeiculo.get(x).getPlacaVeiculo());
+                            } else {
+                                System.out.printf("Moto   %30s  %8s  ", listVeiculo.get(x).getDescricaoVeiculo(), listVeiculo.get(x).getPlacaVeiculo());
+                            }
+                        }
+                    }
+                    System.out.print("\n\n  Pressione enter para continuar ");
+                    leitor.nextLine();
+                    leitor.nextLine();
                     break;
                 case 7:// Esta listando todos os cadastros de clientes para teste
                     leitor.nextLine();

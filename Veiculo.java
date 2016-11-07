@@ -10,7 +10,7 @@ public class Veiculo {
 		private String placaVeiculo;
 		private int carroNumeroPassageiros;
 		private boolean motoPartidaEletrica = true; // True = tem partida		False = não tem partida
-		private boolean status;
+		private boolean disponivel = true;
 
 		public boolean isTipoVeiculo() {
 			return tipoVeiculo;
@@ -54,11 +54,11 @@ public class Veiculo {
 			this.motoPartidaEletrica = motoPartidaEletrica;
 		}
 
-		public boolean isStatus() {
-			return status;
+		public boolean isDisponivel() {
+			return disponivel;
 		}
-		public void setStatus(boolean status) {
-			this.status = status;
+		public void setDisponivel(boolean disponivel) {
+			this.disponivel = disponivel;
 		}
 
 		public void Cadastrar(){

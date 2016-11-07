@@ -9,7 +9,6 @@ public class Cliente {
 	private int idade;
 	private int cpf;
 	private String contato;
-	private boolean status;
 
 	public String getNome() {
 		return nome;
@@ -37,13 +36,6 @@ public class Cliente {
 	}
 	public void setContato(String contato) {
 		this.contato = contato;
-	}
-
-	public boolean isStatus() {
-		return status;
-	}
-	public void setStatus(boolean status) {
-		this.status = status;
 	}
 
 	public void Cadastrar() {
