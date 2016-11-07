@@ -5,12 +5,11 @@ import java.util.InputMismatchException;
 public class Locacao{
   private int veiculo;
   private int cliente;
-  private double valor;
+  private double valor;//valor locação
   private double disconto;
   private int dias;
   private String data;
-  private boolean seguro=true;
-
+  private double seguro;
 
 
 
@@ -114,7 +113,7 @@ public class Locacao{
 	* Returns value of seguro
 	* @return
 	*/
-	public boolean isSeguro() {
+	public double getSeguro() {
 		return seguro;
 	}
 
@@ -122,54 +121,58 @@ public class Locacao{
 	* Sets new value of seguro
 	* @param
 	*/
-	public void setSeguro(boolean seguro) {
+	public void setSeguro(double seguro) {
 		this.seguro = seguro;
 	}
 
-  public void aluga(){
-    Scanner leitor = new Scanner(System.in);
-    new Clear().clearConsole();
-
-    while(true) {
+    public void aluga(int cliente, Veiculo veiculo){
+        this.cliente = cliente;
+        Scanner leitor = new Scanner(System.in);
         new Clear().clearConsole();
-        try {
-            System.out.print("\n  Cadastro Cliente\n\n  Número de dias da locação: ");
-            this.dias = leitor.nextInt();
-            if (this.dias < 1){
-                System.out.print("\n\n  Favor digite um número de dias válido!!");
+
+        while(true) {
+            new Clear().clearConsole();
+            try {
+                System.out.print("\n  Cadastro Cliente\n\n  Número de dias da locação: ");
+                this.dias = leitor.nextInt();
+                if (this.dias < 1){
+                    System.out.print("\n\n  Favor digite um número de dias válido!!");
+                    leitor.nextLine();
+                    continue;
+                }
+            } catch(InputMismatchException a) {
+                System.out.println("  Favor entre com números!!");
                 leitor.nextLine();
                 continue;
             }
-        } catch(InputMismatchException a) {
-            System.out.println("  Favor entre com números!!");
-            leitor.nextLine();
-            continue;
+            System.out.println("  Data da alocação: ");
+            this.data = leitor.nextLine();
+            break;
         }
-        System.out.println("  Data da alocação: ");
-        this.data = leitor.nextLine();
-        break;
+
+
+      while (true){
+          System.out.print("  Alocação com Seguro?(S/N): ");
+          String op = leitor.nextLine();
+          if(op.length() > 1){
+              System.out.println("  Favor entre com UMA letra!!");
+              leitor.nextLine();
+              continue;
+          }
+          else {
+              if (op.charAt(0)=='S' || op.charAt(0)=='s') {
+                  if (veiculo.isTipoVeiculo()) {
+                      this.seguro = 0.05 * veiculo.getValorDiaria() *(1 + veiculo.getCarroNumeroPassageiros()/20);
+                  }else this.seguro = 0.09 * veiculo.getValorDiaria();
+                  this.valor = veiculo.getValorDiaria()* this.dias + this.seguro;
+                  break;
+              }
+              else if (op.charAt(0)=='N' || op.charAt(0)=='n') break;
+
+              System.out.println("  Favor entre com S ou N!!");
+              leitor.nextLine();
+          }
+      }
     }
 
-
-    while (true){
-        System.out.print("  Alocação com Seguro?(S/N): ");
-        String op = leitor.nextLine();
-        if(op.length() > 1){
-            System.out.println("  Favor entre com UMA letra!!");
-            leitor.nextLine();
-            continue;
-        }
-        else {
-            if (op.charAt(0)=='N' || op.charAt(0)=='n') {
-                this.seguro = true;
-                break;
-            }
-            else if (op.charAt(0)=='S' || op.charAt(0)=='s') break;
-
-            System.out.println("  Favor entre com S ou N!!");
-            leitor.nextLine();
-        }
-    }
-
-  }
 }

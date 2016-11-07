@@ -88,6 +88,7 @@ public class Main {
                     }
                     else {
                       int clienteAL=0;
+                      int carroAL=0;
                       System.out.println("  Clientes disponíveis: ");
                       for(int x = 0; x < listCliente.size(); x++){
                           cliente = listCliente.get(x);
@@ -106,9 +107,73 @@ public class Main {
                         }
                         else break;
                       }
+
+
+                      new Clear().clearConsole();
+                      System.out.print("    Tipo   Descrição                       Placa\n" + listVeiculo.size());
+                      for(int x = 0; x < listVeiculo.size(); x++){
+                          if(listVeiculo.get(x).isDisponivel()){
+                              System.out.printf("\n%2d  ", x+1);
+                              if (listVeiculo.get(x).isTipoVeiculo()){
+                                  System.out.printf("Carro  %30s  %8s  ", listVeiculo.get(x).getDescricaoVeiculo(), listVeiculo.get(x).getPlacaVeiculo());
+                              } else {
+                                  System.out.printf("Moto   %30s  %8s  ", listVeiculo.get(x).getDescricaoVeiculo(), listVeiculo.get(x).getPlacaVeiculo());
+                              }
+                          }
+                      }
+                      while(true) {
+                        try {
+                          System.out.print("\n  Escolha um carro: ");
+                          carroAL = leitor.nextInt();
+                        } catch(InputMismatchException a) {
+                          System.out.print("\n  Tente novamente, digite apenas números");
+                          leitor.nextLine();
+                        }
+                        if (clienteAL < listCliente.size() || clienteAL > listCliente.size()) {
+                          System.out.println("Favor informar carro que foram listados!");
+                        }
+                        else break;
+                      }
+
                       Locacao alugado = new Locacao();
-                      alugado.aluga();
-                      listAlugado.add(alugado);
+                      alugado.aluga(clienteAL-1,listVeiculo.get(carroAL-1));
+
+                      while(true) {
+                          new Clear().clearConsole();
+                          System.out.printf("\n  Locação de Veículos\n\n  Deseja adicionar aluguel: \n\n  1 - Sim\n  2 - Não\n");
+                          if(op == -666){
+                              System.out.print("\n  Tente novamente, Opção invalida");
+      					}
+                          System.out.print("\n  Escolha uma opcão: ");
+                          try {
+                              op = leitor.nextInt();
+                          } catch (InputMismatchException a) {
+                              op = -666;
+                              leitor.nextLine();
+                          }
+                          if(op == 1) {
+                              double desconto = leitor.nextDouble();
+                              while(true) {
+                                try {
+                                    System.out.printf("  Valor total do aluguel: %.2f\n  Digite o valor de desconto desejado(Desconto máximo 12 porcento): ",alugado.getValor());
+                                } catch(InputMismatchException a) {
+                                  System.out.print("\n  Tente novamente, digite apenas números");
+                                  leitor.nextLine();
+                                }
+                                if (desconto < 0 || desconto > 12) {
+                                  System.out.println("  Valor inválido!");
+                                }
+                                else break;
+                              }
+                              if (desconto != 0)alugado.setValor(alugado.getValor()-(alugado.getValor()*(desconto/100)));
+                              listVeiculo.get(carroAL-1).setDisponivel(false);
+                              listAlugado.add(alugado);
+      						break;
+      					} else if(op == 2) {
+      						break;
+      					}
+      					op = -666;
+                      }
                     }
 
                     break;
@@ -131,7 +196,7 @@ public class Main {
                     break;
                 case 6:
                     new Clear().clearConsole();
-                    System.out.print("    Tipo   Descrição                       Placa\n");
+                    System.out.print("    Tipo   Descrição                       Placa\n" + listVeiculo.size());
                     for(int x = 0; x < listVeiculo.size(); x++){
                         if(listVeiculo.get(x).isDisponivel()){
                             System.out.printf("\n%2d  ", x+1);
@@ -147,26 +212,12 @@ public class Main {
                     leitor.nextLine();
                     break;
                 case 7:// Esta listando todos os cadastros de clientes para teste
-                    new Clear().clearConsole();
-                    System.out.print("    Tipo   Descrição                       Placa\n");
-                    for(int x = 0; x < listVeiculo.size(); x++){
-                        System.out.printf("\n%2d  ", x+1);
-                        if (listVeiculo.get(x).isTipoVeiculo()){
-                            System.out.printf("Carro  %30s  %8s  ", listVeiculo.get(x).getDescricaoVeiculo(), listVeiculo.get(x).getPlacaVeiculo());
-                        } else {
-                            System.out.printf("Moto   %30s  %8s  ", listVeiculo.get(x).getDescricaoVeiculo(), listVeiculo.get(x).getPlacaVeiculo());
-                        }
-                    }
-                    System.out.print("\n\n  Pressione enter para continuar ");
                     leitor.nextLine();
-                    leitor.nextLine();
-
-                    /*leitor.nextLine();
                     for(int x = 0; x < listCliente.size(); x++){
                         System.out.println(x+1 + " " + listCliente.get(x).getNome());
                     }
                     System.out.print("Aperte ENTER ");
-                    leitor.nextLine();*/
+                    leitor.nextLine();
                     break;
                 case 8:
                     System.exit(0);
