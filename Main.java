@@ -131,7 +131,7 @@ public class Main {
                     break;
                 case 6:
                     new Clear().clearConsole();
-                    System.out.print("    Tipo   Descrição                       Placa\n" + listVeiculo.size());
+                    System.out.print("    Tipo   Descrição                       Placa\n");
                     for(int x = 0; x < listVeiculo.size(); x++){
                         if(listVeiculo.get(x).isDisponivel()){
                             System.out.printf("\n%2d  ", x+1);
@@ -147,12 +147,26 @@ public class Main {
                     leitor.nextLine();
                     break;
                 case 7:// Esta listando todos os cadastros de clientes para teste
+                    new Clear().clearConsole();
+                    System.out.print("    Tipo   Descrição                       Placa\n");
+                    for(int x = 0; x < listVeiculo.size(); x++){
+                        System.out.printf("\n%2d  ", x+1);
+                        if (listVeiculo.get(x).isTipoVeiculo()){
+                            System.out.printf("Carro  %30s  %8s  ", listVeiculo.get(x).getDescricaoVeiculo(), listVeiculo.get(x).getPlacaVeiculo());
+                        } else {
+                            System.out.printf("Moto   %30s  %8s  ", listVeiculo.get(x).getDescricaoVeiculo(), listVeiculo.get(x).getPlacaVeiculo());
+                        }
+                    }
+                    System.out.print("\n\n  Pressione enter para continuar ");
                     leitor.nextLine();
+                    leitor.nextLine();
+
+                    /*leitor.nextLine();
                     for(int x = 0; x < listCliente.size(); x++){
                         System.out.println(x+1 + " " + listCliente.get(x).getNome());
                     }
                     System.out.print("Aperte ENTER ");
-                    leitor.nextLine();
+                    leitor.nextLine();*/
                     break;
                 case 8:
                     System.exit(0);
