@@ -118,9 +118,9 @@ public class Main {
                     for(int x = 0; x < listVeiculo.size(); x++){
                         System.out.printf("\n%2d  ", x+1);
                         if (listVeiculo.get(x).isTipoVeiculo()){
-                            System.out.printf("Carro  %30s  %8s  ", listVeiculo.get(x).getDescricaoVeiculo(), listVeiculo.get(x).getPlacaVeiculo());
+                            System.out.printf("Carro  %-30s  %-8s  ", listVeiculo.get(x).getDescricaoVeiculo(), listVeiculo.get(x).getPlacaVeiculo());
                         } else {
-                            System.out.printf("Moto   %30s  %8s  ", listVeiculo.get(x).getDescricaoVeiculo(), listVeiculo.get(x).getPlacaVeiculo());
+                            System.out.printf("Moto   %-30s  %-8s  ", listVeiculo.get(x).getDescricaoVeiculo(), listVeiculo.get(x).getPlacaVeiculo());
                         }
                     }
                     System.out.print("\n\n  Pressione enter para continuar ");
@@ -136,9 +136,9 @@ public class Main {
                         if(listVeiculo.get(x).isDisponivel()){
                             System.out.printf("\n%2d  ", x+1);
                             if (listVeiculo.get(x).isTipoVeiculo()){
-                                System.out.printf("Carro  %30s  %8s  ", listVeiculo.get(x).getDescricaoVeiculo(), listVeiculo.get(x).getPlacaVeiculo());
+                                System.out.printf("Carro  %-30s  %-8s  ", listVeiculo.get(x).getDescricaoVeiculo(), listVeiculo.get(x).getPlacaVeiculo());
                             } else {
-                                System.out.printf("Moto   %30s  %8s  ", listVeiculo.get(x).getDescricaoVeiculo(), listVeiculo.get(x).getPlacaVeiculo());
+                                System.out.printf("Moto   %-30s  %-8s  ", listVeiculo.get(x).getDescricaoVeiculo(), listVeiculo.get(x).getPlacaVeiculo());
                             }
                         }
                     }
@@ -148,25 +148,14 @@ public class Main {
                     break;
                 case 7:// Esta listando todos os cadastros de clientes para teste
                     new Clear().clearConsole();
-                    System.out.print("    Tipo   Descrição                       Placa\n");
-                    for(int x = 0; x < listVeiculo.size(); x++){
+                    System.out.print("    Nome                            Cpf\n");
+                    for(int x = 0; x < listCliente.size(); x++){
                         System.out.printf("\n%2d  ", x+1);
-                        if (listVeiculo.get(x).isTipoVeiculo()){
-                            System.out.printf("Carro  %30s  %8s  ", listVeiculo.get(x).getDescricaoVeiculo(), listVeiculo.get(x).getPlacaVeiculo());
-                        } else {
-                            System.out.printf("Moto   %30s  %8s  ", listVeiculo.get(x).getDescricaoVeiculo(), listVeiculo.get(x).getPlacaVeiculo());
-                        }
+                        System.out.printf("%-30s  %-8d  ", listCliente.get(x).getNome(), listCliente.get(x).getCpf());
                     }
                     System.out.print("\n\n  Pressione enter para continuar ");
                     leitor.nextLine();
                     leitor.nextLine();
-
-                    /*leitor.nextLine();
-                    for(int x = 0; x < listCliente.size(); x++){
-                        System.out.println(x+1 + " " + listCliente.get(x).getNome());
-                    }
-                    System.out.print("Aperte ENTER ");
-                    leitor.nextLine();*/
                     break;
                 case 8:
                     System.exit(0);

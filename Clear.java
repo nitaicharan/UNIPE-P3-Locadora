@@ -4,7 +4,7 @@ import java.io.IOException;
 
 public class Clear{
         public void clearConsole(){
-            try {
+        try {
             final String os = System.getProperty("os.name");
             if (os.contains("Windows")){
                 new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
