@@ -179,13 +179,18 @@ public class Main {
                     break;
                 case 4: // Esta listando todos os cadastros de veiculo para teste
                     new Clear().clearConsole();
-                    System.out.print("    Tipo   Descrição                       Placa\n" + listVeiculo.size());
+                    System.out.print("\n  Listagem de veículos cadastrados\n\n      Tipo   Descrição                       Placa     Partida  Num. passageiros");
                     for(int x = 0; x < listVeiculo.size(); x++){
-                        System.out.printf("\n%2d  ", x+1);
+                        System.out.printf("\n  %2d  ", x+1);
                         if (listVeiculo.get(x).isTipoVeiculo()){
-                            System.out.printf("Carro  %-30s  %-8s  ", listVeiculo.get(x).getDescricaoVeiculo(), listVeiculo.get(x).getPlacaVeiculo());
+                            System.out.printf("Carro  %-30s  %-8s           %2d", listVeiculo.get(x).getDescricaoVeiculo(), listVeiculo.get(x).getPlacaVeiculo(), listVeiculo.get(x).getCarroNumeroPassageiros());
                         } else {
                             System.out.printf("Moto   %-30s  %-8s  ", listVeiculo.get(x).getDescricaoVeiculo(), listVeiculo.get(x).getPlacaVeiculo());
+                            if (listVeiculo.get(x).isMotoPartidaEletrica()) {
+                                System.out.printf("Com");
+                            } else {
+                                System.out.printf("Sem");
+                            }
                         }
                     }
                     System.out.print("\n\n  Pressione enter para continuar ");
@@ -196,14 +201,19 @@ public class Main {
                     break;
                 case 6:
                     new Clear().clearConsole();
-                    System.out.print("    Tipo   Descrição                       Placa\n" + listVeiculo.size());
+                    System.out.print("\n  Listagem de veículos cadastrados\n\n      Tipo   Descrição                       Placa     Partida  Num. passageiros");
                     for(int x = 0; x < listVeiculo.size(); x++){
                         if(listVeiculo.get(x).isDisponivel()){
-                            System.out.printf("\n%2d  ", x+1);
+                            System.out.printf("\n  %2d  ", x+1);
                             if (listVeiculo.get(x).isTipoVeiculo()){
-                                System.out.printf("Carro  %-30s  %-8s  ", listVeiculo.get(x).getDescricaoVeiculo(), listVeiculo.get(x).getPlacaVeiculo());
+                                System.out.printf("Carro  %-30s  %-8s           %2d", listVeiculo.get(x).getDescricaoVeiculo(), listVeiculo.get(x).getPlacaVeiculo(), listVeiculo.get(x).getCarroNumeroPassageiros());
                             } else {
                                 System.out.printf("Moto   %-30s  %-8s  ", listVeiculo.get(x).getDescricaoVeiculo(), listVeiculo.get(x).getPlacaVeiculo());
+                                if (listVeiculo.get(x).isMotoPartidaEletrica()) {
+                                    System.out.printf("Com");
+                                } else {
+                                    System.out.printf("Sem");
+                                }
                             }
                         }
                     }
@@ -213,10 +223,10 @@ public class Main {
                     break;
                 case 7:// Esta listando todos os cadastros de clientes para teste
                     new Clear().clearConsole();
-                    System.out.print("    Nome                            Cpf\n");
+                    System.out.print("\n  Listagem de cliente\n\n      Nome                            Cpf           Idade  Contato");
                     for(int x = 0; x < listCliente.size(); x++){
-                        System.out.printf("\n%2d  ", x+1);
-                        System.out.printf("%-30s  %-8d  ", listCliente.get(x).getNome(), listCliente.get(x).getCpf());
+                        System.out.printf("\n  %2d  ", x+1);
+                        System.out.printf("%-30s  %-11d   %-5d  %-30s", listCliente.get(x).getNome(), listCliente.get(x).getCpf(), listCliente.get(x).getIdade(), listCliente.get(x).getContato());
                     }
                     System.out.print("\n\n  Pressione enter para continuar ");
                     leitor.nextLine();

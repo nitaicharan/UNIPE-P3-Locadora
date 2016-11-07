@@ -137,6 +137,7 @@ public class Veiculo {
 			} else {
 				while(true) {
 					new Clear().clearConsole();
+					System.out.print("\n  Cadastro de veiculo\n");
 					try {
 						System.out.print("\n  Possui partida eletrica\n\n  1 - Sim\n  2 - Não\n\n  ");
 						if(in == -666){
@@ -144,7 +145,10 @@ public class Veiculo {
 						}
 						System.out.print("Escolha uma opção: ");
 						in = leitor.nextInt();
-						if((in == 1) || (in == 2)) {
+						if(in == 1) {
+							break;
+						} else if (in == 2) {
+							this.motoPartidaEletrica = false;
 							break;
 						}
 						in = -666;

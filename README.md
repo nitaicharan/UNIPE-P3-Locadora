@@ -1,22 +1,29 @@
-#Locadora de Veículos
+### Descrição
 
 Na locadora de veículos podem ser locados dois tipos de veículos:
-    Carros e Motos
 
-###Cadastro de Veículos:
+* Carros
+* Motos
+
+### Requisitos
+
+#### Cadastro de Veículos:
+
 No cadastro de veículos devemos informar:
-  * O tipo de veículo (Carro ou Moto)
-  * O valor de locação (valor referente a um dia diária)
-  * Descrição do veículo
-  * Placa do veículo
-  * Se for um carro deve ainda ser informado o número de passageiros.
-  * Se for uma moto deve ainda ser informado se tem partida elétrica.
+* O tipo de veículo (Carro ou Moto)
+* O valor de locação (valor referente a um dia diária)
+* Descrição do veículo
+* Placa do veículo
+* Se for um carro deve ainda ser informado o número de passageiros.
+* Se for uma moto deve ainda ser informado se tem partida elétrica.
 
-###Cadastro de Clientes
+#### Cadastro de Clientes
+
   * Para locar um veículo o cliente precisa estar cadastrado.
   * No cadastro do cliente precisa ser informado os seus dados pessoais.
 
-###Locação de Veículos
+### Locação de Veículos
+
 Na locação de um veículo deve ser informado:
   * O cliente que está locando o veículo
   * O número de dias da locação
@@ -37,6 +44,7 @@ Na locação de um veículo deve ser informado:
     * Listagem de clientes
     * Listagem das locações
     * Listagem de veículos disponíveis
+
 ```java
   int op;
   String firstOp;
