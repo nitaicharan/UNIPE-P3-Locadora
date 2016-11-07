@@ -15,6 +15,9 @@ public class Main {
         Veiculo veiculo = new Veiculo();
         ArrayList<Veiculo> listVeiculo = new ArrayList<Veiculo>();
 
+        Locacao alugado = new Locacao();
+        ArrayList<Locacao> listAlugado = new ArrayList<Locacao>();
+
         while(true) {
             new Clear().clearConsole();
             System.out.print("\n  Locadora de Veiculos\n\n  1 - Cadastrar veículo\n  2 - Cadastrar cliente\n  3 - Locação de veículo\n  4 - Listagem de veículos cadastrados\n  5 - Listagem das locações\n  6 - Listagem de veículos disponíveis\n  7 - Listagem de cliente\n  8 - Sair\n");
@@ -39,19 +42,21 @@ public class Main {
                     break;
                 case 3:
                     if (listCliente.size() == 0){
-                      System.out.println("Nem um cliente cadastrado!!!");
+                        leitor.nextLine();
+                        System.out.println("  Nem um cliente cadastrado!!!");
+                        leitor.nextLine();
                     }
                     else {
-                      int clienteAL;
-                      System.out.println("Clientes disponíveis: ");
+                      int clienteAL=0;
+                      System.out.println("  Clientes disponíveis: ");
                       for(int x = 0; x < listCliente.size(); x++){
                           cliente = listCliente.get(x);
-                          System.out.println(x+1 + " " + cliente.getNome());
+                          System.out.println("  "+x+1 + " " + cliente.getNome());
                       }
                       while(true) {
-                        clienteAL = leitor.nextInt();
                         try {
                           System.out.print("\n  Escolha um locatário: ");
+                          clienteAL = leitor.nextInt();
                         } catch(InputMismatchException a) {
                           System.out.print("\n  Tente novamente, digite apenas números");
                           leitor.nextLine();
@@ -61,20 +66,15 @@ public class Main {
                         }
                         else break;
                       }
-
-
-
+                      alugado.aluga();
+                      listAlugado.add(alugado);
                     }
-
-
-
-
 
                     break;
                 case 4: // Esta listando todos os cadastros de veiculo para teste
                     for(int x = 0; x < listVeiculo.size(); x++){
                         veiculo = listVeiculo.get(x);
-                        System.out.println(x+1 + " " + veiculo.getTipoVeiculo() + " " + veiculo.getDescricaoVeiculo());
+                        System.out.println(x+1 + " " + veiculo.isTipoVeiculo() + " " + veiculo.getDescricaoVeiculo());
                     }
                     break;
                 case 5:
