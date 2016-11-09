@@ -39,60 +39,43 @@ public class Main {
                     }
                     break;
                 case 3:
-                    if (listCliente.size() == 0){
-                        pause("Nem um cliente cadastrado");
+                    if (listCliente.isEmpty()){
+                        clearConsole();
+                        pause("Locação de veículo\n\n  Nem um cliente cadastrado\n\n  Pressione enter para voltar");
                     }
                     else {
                         int clienteAL=0;
                         int carroAL=0;
                         while(true) {
-                            printListCliente(listCliente, "Clientes cadastrados:");
+                            printListCliente(listCliente, "Clientes cadastrados");
+                            System.out.println();
                             if(clienteAL == -666){
         						System.out.print("\n  Tente novamente, Opção invalida");
         					}
                             System.out.print("\n  Escolha um locatário: ");
-                            try {
-                                clienteAL = leitor.nextInt();
-                                break;
-                            } catch (InputMismatchException a) {
-                                clienteAL = -666;
-                                leitor.nextLine();
-                            }
-                            if((clienteAL > 0) && (clienteAL < listCliente.size())) {
+                            clienteAL = inputInt() - 1;
+                            if((clienteAL >= 0) && (clienteAL < listCliente.size())) {
                                 break;
                             }
-      					    op = -666;
+      					    clienteAL = -666;
                         }
 
-
-                      clearConsole();
-                      System.out.print("    Tipo   Descrição                       Placa\n" + listVeiculo.size());
-                      for(int x = 0; x < listVeiculo.size(); x++){
-                          if(listVeiculo.get(x).isDisponivel()){
-                              System.out.printf("\n%2d  ", x+1);
-                              if (listVeiculo.get(x).isTipoVeiculo()){
-                                  System.out.printf("Carro  %30s  %8s  ", listVeiculo.get(x).getDescricaoVeiculo(), listVeiculo.get(x).getPlacaVeiculo());
-                              } else {
-                                  System.out.printf("Moto   %30s  %8s  ", listVeiculo.get(x).getDescricaoVeiculo(), listVeiculo.get(x).getPlacaVeiculo());
-                              }
-                          }
-                      }
-                      while(true) {
-                        try {
-                          System.out.print("\n  Escolha um carro: ");
-                          carroAL = leitor.nextInt();
-                        } catch(InputMismatchException a) {
-                          System.out.print("\n  Tente novamente, digite apenas números");
-                          leitor.nextLine();
+                        while(true) {
+                            printListVeiculo(listVeiculo, "Listagem de veículos disponiveis", true);
+                            System.out.println();
+                            if(carroAL == -666){
+        						System.out.print("\n  Tente novamente, Opção invalida");
+        					}
+                            System.out.print("\n  Escolha um carro: ");
+                            carroAL = inputInt() - 1;
+                            if ((carroAL >= 0) && (carroAL < listVeiculo.size())) {
+                                break;
+                            }
+                            carroAL = -666;
                         }
-                        if (clienteAL < listCliente.size() || clienteAL > listCliente.size()) {
-                          System.out.println("Favor informar carro que foram listados!");
-                        }
-                        else break;
-                      }
 
                       Locacao alugado = new Locacao();
-                      alugado.aluga(clienteAL-1,listVeiculo.get(carroAL-1));
+                      alugado.aluga(clienteAL,listVeiculo.get(carroAL));
 
                       while(true) {
                           clearConsole();
@@ -135,17 +118,17 @@ public class Main {
                     break;
                 case 4:
                     printListVeiculo(listVeiculo, "Listagem de veículos cadastrados", false);
-                    pause("Pressione enter para continuar");
+                    pause("\n  Pressione enter para continuar");
                     break;
                 case 5:
                     break;
                 case 6:
                     printListVeiculo(listVeiculo, "Listagem de veículos disponiveis", true);
-                    pause("Pressione enter para continuar");
+                    pause("\n  Pressione enter para continuar");
                     break;
                 case 7:
                     printListCliente(listCliente, "Listagem de clientes");
-                    pause("Pressione enter para continuar");
+                    pause("\n  Pressione enter para continuar");
                     break;
                 case 8:
                     clearConsole();
@@ -158,7 +141,7 @@ public class Main {
 
     static void pause(String mensagem){
         Scanner input = new Scanner(System.in);
-        System.out.printf("\n\n  %s ", mensagem);
+        System.out.printf("\n  %s ", mensagem);
         input.nextLine();
     }
 
