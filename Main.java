@@ -26,15 +26,15 @@ public class Main {
             switch (op) {
                 case 1:
                     Veiculo veiculo = new Veiculo();
-                    veiculo.Cadastrar();
-                    if(confirmacaoBoolean("Cadastro veiculo", "Sim", "Não")){
+                    cadastrarVeiculo(veiculo);
+                    if(confirmacaoBoolean("Cadastro de veiculo", "Sim", "Não")){
                         listVeiculo.add(veiculo);
                     }
                     break;
                 case 2:
                     Cliente cliente = new Cliente();
-                    cliente.Cadastrar();
-                    if(confirmacaoBoolean("Cadastro cliente", "Sim", "Não")){
+                    cadastrarCliente(cliente);
+                    if(confirmacaoBoolean("Cadastro de cliente", "Sim", "Não")){
                         listCliente.add(cliente);
                     }
                     break;
@@ -156,6 +156,12 @@ public class Main {
         }
     }
 
+    static void pause(String mensagem){
+        Scanner input = new Scanner(System.in);
+        System.out.printf("\n\n  %s ", mensagem);
+        input.nextLine();
+    }
+
     static void clearConsole(){
         try {
             final String os = System.getProperty("os.name");
@@ -183,6 +189,28 @@ public class Main {
         return in;
     }
 
+    static double inputDouble(){
+        Scanner input = new Scanner(System.in);
+        double in = 0;
+        try {
+            in = input.nextDouble();
+        } catch (InputMismatchException a) {
+            in = -666;
+            input.nextLine();
+        }
+        return in;
+    }
+
+    static String inputString(int stringEnd){
+        Scanner leitor = new Scanner(System.in);
+        String string = new String();
+        string = leitor.nextLine();
+        if (string.length() > stringEnd){
+            string = string.substring(0, stringEnd);
+        }
+        return string;
+    }
+
     static boolean confirmacaoBoolean(String titulo, String opcao1, String opcao2){
         Scanner input = new Scanner(System.in);
         int in = 0;
@@ -205,23 +233,23 @@ public class Main {
 
     static void printListCliente(ArrayList<Cliente> listCliente, String titulo){
 		clearConsole();
-        System.out.printf("\n  %s\n\n      Nome                            Cpf           Idade  Contato", titulo);
+        System.out.printf("\n  %s\n\n      Nome                                 Cpf              Idade  Contato", titulo);
 		for(int x = 0; x < listCliente.size(); x++){
 			System.out.printf("\n  %2d  ", x+1);
-			System.out.printf("%-30s  %-11d   %-5d  %-30s", listCliente.get(x).getNome(), listCliente.get(x).getCpf(), listCliente.get(x).getIdade(), listCliente.get(x).getContato());
+			System.out.printf("%-35s  %-15s   %-5d  %-30s", listCliente.get(x).getNome(), listCliente.get(x).getCpf(), listCliente.get(x).getIdade(), listCliente.get(x).getContato());
 		}
 	}
 
     static void printListVeiculo(ArrayList<Veiculo> listVeiculo, String titulo, boolean disponiveis){
         clearConsole();
-        System.out.printf("\n  %s\n\n      Tipo   Descrição                       Placa     Partida  Num. passageiros", titulo);
+        System.out.printf("\n  %s\n\n      Tipo   Descrição                                 Placa     Partida  Num. passageiros", titulo);
         for(int x = 0; x < listVeiculo.size(); x++){
             if(listVeiculo.get(x).isDisponivel() || !disponiveis){
                 System.out.printf("\n  %2d  ", x+1);
                 if (listVeiculo.get(x).isTipoVeiculo()){
-                    System.out.printf("Carro  %-30s  %-8s           %2d", listVeiculo.get(x).getDescricaoVeiculo(), listVeiculo.get(x).getPlacaVeiculo(), listVeiculo.get(x).getCarroNumeroPassageiros());
+                    System.out.printf("Carro  %-40s  %-8s           %2d", listVeiculo.get(x).getDescricaoVeiculo(), listVeiculo.get(x).getPlacaVeiculo(), listVeiculo.get(x).getCarroNumeroPassageiros());
                 } else {
-                    System.out.printf("Moto   %-30s  %-8s  ", listVeiculo.get(x).getDescricaoVeiculo(), listVeiculo.get(x).getPlacaVeiculo());
+                    System.out.printf("Moto   %-40s  %-8s  ", listVeiculo.get(x).getDescricaoVeiculo(), listVeiculo.get(x).getPlacaVeiculo());
                     if (listVeiculo.get(x).isMotoPartidaEletrica()) {
                         System.out.printf("Com");
                     } else {
@@ -232,9 +260,83 @@ public class Main {
         }
     }
 
-    static void pause(String mensagem){
-        Scanner input = new Scanner(System.in);
-        System.out.printf("\n\n  %s ", mensagem);
-        input.nextLine();
+    static void cadastrarCliente(Cliente cliente) {
+	    Scanner leitor = new Scanner(System.in);
+		int in = 0;
+
+		clearConsole();
+		System.out.print("\n  Cadastro de cliente\n\n  Digite seu nome: ");
+    	cliente.setNome(inputString(35));
+
+		do{
+			clearConsole();
+			System.out.print("\n  Cadastro de cliente\n");
+            if (in == -666){
+                System.out.print("\n  Tente novamente, digite apenas números");
+            }
+            System.out.print("\n  Digite sua idade: ");
+            in = inputInt();
+		} while(in == -666);
+
+        clearConsole();
+		System.out.print("\n  Cadastro de cliente\n\n  Exemplo: 999.999.999-99\n\n  Digite seu cpf: ");
+		cliente.setCpf(inputString(15));
+
+		clearConsole();
+		System.out.print("\n  Cadastro de cliente\n\n  Digite o contato: ");
+		cliente.setContato(leitor.nextLine());
+	}
+
+    static void cadastrarVeiculo(Veiculo veiculo){
+        Scanner leitor = new Scanner(System.in);
+        int in = 0;
+
+        if (!confirmacaoBoolean("Cadastro de veiculo", "Carro", "Moto")){
+            veiculo.setTipoVeiculo(false);
+        }
+
+        while(true) {
+            clearConsole();
+            System.out.print("\n  Cadastro de veiculo\n");
+            if(in == -666){
+                System.out.print("\n  Tente novamente, Valor invalido");
+            }
+            System.out.print("\n  Digite o valor da diaria do veiculo: ");
+            veiculo.setValorDiaria(inputDouble());
+            if(veiculo.getValorDiaria() > 0.0) {
+                    break;
+            } else {
+            in = -666;
+            }
+        }
+
+        clearConsole();
+        System.out.print("\n  Cadastro de veiculo\n\n  Digite a descrição do veiculo: ");
+        veiculo.setDescricaoVeiculo(inputString(40));
+
+        clearConsole();
+        System.out.print("\n  Cadastro de veiculo\n\n  Exemplo: XXX-9999\n\n  Digite a placa do veiculo: ");
+        veiculo.setPlacaVeiculo(inputString(8));
+
+        in = 0;
+        if(veiculo.isTipoVeiculo()) {
+            while(true) {
+                clearConsole();
+                System.out.print("\n  Cadastro de veiculo\n");
+                if(in == -666){
+                    System.out.print("\n  Tente novamente, Valor invalido");
+                }
+                System.out.print("\n  Digite o numero de passageiros:");
+                veiculo.setCarroNumeroPassageiros(inputInt());
+                if(veiculo.getCarroNumeroPassageiros() > 0) {
+                    break;
+                }
+                in = -666;
+            }
+        } else {
+            if (!confirmacaoBoolean("Cadastro de veiculo\n\n  Possui partida eletrica", "Sim", "Não")){
+                veiculo.setMotoPartidaEletrica(false);
+            }
+        }
     }
 }
